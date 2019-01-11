@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Projeto02.Entidades;
+using Projeto02.Controles;
 
 namespace Projeto02
 {
@@ -30,12 +31,20 @@ namespace Projeto02
             Console.WriteLine("\t (3) - Terceirizado");
             Console.WriteLine("Informe o código desejado...:");
             funcionario.TipoContratacao = (TipoContratacao) int.Parse(Console.ReadLine());
-
+            /*
             Console.WriteLine("\nDADOS DO FUNCIONÀRIO\n");
             Console.WriteLine("Código do funcionário.......:" + funcionario.IdFuncionario);
             Console.WriteLine("Nome.......:" + funcionario.Nome);
             Console.WriteLine("Salário.......:" + funcionario.Salario);
             Console.WriteLine("Tipo de contratação.......:" + funcionario.TipoContratacao);
+            */
+
+            FuncionarioControle funcionarioControle = new FuncionarioControle();
+            funcionarioControle.ExportarParaTxt(funcionario);
+            funcionarioControle.ExportarParaCsv(funcionario);
+            funcionarioControle.ExportarParaXml(funcionario);
+
+            Console.WriteLine("Gravado com sucesso!");
 
             Console.ReadKey();
         }
